@@ -37,7 +37,19 @@ TourVista is a fully responsive travel website designed using **HTML, CSS, JavaS
 
 ## 📸 Screenshots
 
-> You can add screenshots of key sections here to showcase your design.
+<img width="946" alt="screenshort 1" src="https://github.com/user-attachments/assets/183bdde6-bd3e-473d-8c7c-f15269cef3d7" />
+<img width="931" alt="Screenshot 2" src="https://github.com/user-attachments/assets/d1a18684-344f-4fa4-9064-222f81e664c4" />
+<img width="922" alt="Screenshot 3" src="https://github.com/user-attachments/assets/8b02b893-feb7-435e-b03b-9152e0df004a" />
+<img width="934" alt="Screenshot 4" src="https://github.com/user-attachments/assets/cf4c4182-fc4e-48e5-8279-97c66e738f6b" />
+<img width="927" alt="Screenshot 5" src="https://github.com/user-attachments/assets/87488c58-c76f-47cb-81e0-2527ec4a8ea5" />
+<img width="923" alt="Screenshot 6" src="https://github.com/user-attachments/assets/7c23e903-cd4c-4ee0-aa0b-211341f41377" />
+<img width="930" alt="Screenshot 7" src="https://github.com/user-attachments/assets/907a7f64-75d9-42c6-a1aa-f51fa4b2b868" />
+<img width="940" alt="Screenshot 8" src="https://github.com/user-attachments/assets/09251965-252b-44b8-9bae-9dff3b7121d0" />
+<img width="947" alt="Screenshot 9" src="https://github.com/user-attachments/assets/5fa4ed73-065a-40dc-8cdf-a4db69346475" />
+
+
+
+
 
 ---
 
@@ -46,4 +58,7 @@ TourVista is a fully responsive travel website designed using **HTML, CSS, JavaS
 1. Clone the repository:
    ```bash
    git clone https://github.com/your-username/tourvista.git
-cd tourvista
+2. Navigate to the project folder:
+   ```bash
+   cd tourvista
+3. Open index.html in your browser.
