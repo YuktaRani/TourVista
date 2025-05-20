@@ -1,0 +1,281 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Tourist - Sign Up</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Poppins', sans-serif;
+        }
+
+        body {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            min-height: 100vh;
+            background: linear-gradient(rgba(0, 0, 0, 0.6), rgba(0, 0, 0, 0.6)), url('img/booking.jpg');
+            background-size: cover;
+            background-position: center;
+        }
+
+        .wrapper {
+            width: 420px;
+            background: rgba(255, 255, 255, 0.1);
+            backdrop-filter: blur(20px);
+            color: #fff;
+            border-radius: 10px;
+            padding: 30px 40px;
+            border: 2px solid rgba(255, 255, 255, 0.2);
+            transform: translateY(20px);
+            opacity: 0;
+            animation: slideIn 0.5s ease forwards;
+        }
+
+        @keyframes slideIn {
+            100% {
+                transform: translateY(0);
+                opacity: 1;
+            }
+        }
+
+        .wrapper h1 {
+            font-size: 36px;
+            text-align: center;
+            margin-bottom: 30px;
+            color: #fff;
+            text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.3);
+        }
+
+        .wrapper .input-box {
+            position: relative;
+            width: 100%;
+            height: 50px;
+            margin: 25px 0;
+        }
+
+        .input-box input {
+            width: 100%;
+            height: 100%;
+            background: rgba(255, 255, 255, 0.1);
+            border: 2px solid rgba(255, 255, 255, 0.2);
+            border-radius: 40px;
+            padding: 20px 45px 20px 20px;
+            font-size: 16px;
+            color: #fff;
+            transition: all 0.3s ease;
+        }
+
+        .input-box input::placeholder {
+            color: rgba(255, 255, 255, 0.8);
+        }
+
+        .input-box input:focus {
+            border-color: #fff;
+            box-shadow: 0 0 10px rgba(255, 255, 255, 0.3);
+        }
+
+        .input-box i {
+            position: absolute;
+            right: 20px;
+            top: 50%;
+            transform: translateY(-50%);
+            font-size: 20px;
+            color: rgba(255, 255, 255, 0.8);
+        }
+
+        .wrapper button {
+            width: 100%;
+            height: 45px;
+            background: #fff;
+            border: none;
+            outline: none;
+            border-radius: 40px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+            cursor: pointer;
+            font-size: 16px;
+            color: #333;
+            font-weight: 600;
+            transition: all 0.3s ease;
+        }
+
+        .wrapper button:hover {
+            background: #f0f0f0;
+            transform: scale(1.02);
+        }
+
+        .wrapper .login-link {
+            text-align: center;
+            margin-top: 20px;
+            font-size: 14.5px;
+        }
+
+        .login-link p a {
+            color: #fff;
+            text-decoration: none;
+            font-weight: 600;
+        }
+
+        .login-link p a:hover {
+            text-decoration: underline;
+        }
+        /* Toast Notification Styles */
+        .toast-container {
+            position: fixed;
+            top: 30px;
+            right: 30px;
+            z-index: 9999;
+        }
+
+        .toast {
+            position: relative;
+            background: rgba(255, 255, 255, 0.9);
+            padding: 20px 35px 20px 25px;
+            border-radius: 12px;
+            box-shadow: 0 5px 10px rgba(0, 0, 0, 0.1);
+            border-left: 6px solid #4070f4;
+            overflow: hidden;
+            transform: translateX(calc(100% + 30px));
+            transition: all 0.5s cubic-bezier(0.68, -0.55, 0.265, 1.35);
+        }
+
+        .toast.active {
+            transform: translateX(0%);
+        }
+
+        .toast .toast-content {
+            display: flex;
+            align-items: center;
+        }
+
+        .toast-content .check {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            height: 35px;
+            width: 35px;
+            background-color: #4070f4;
+            color: #fff;
+            font-size: 20px;
+            border-radius: 50%;
+        }
+
+        .toast-content .message {
+            display: flex;
+            flex-direction: column;
+            margin: 0 20px;
+        }
+
+        .message .text {
+            font-size: 16px;
+            font-weight: 400;
+            color: #666666;
+        }
+
+        .message .text.text-1 {
+            font-weight: 600;
+            color: #333;
+        }
+
+        .toast .progress {
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            height: 3px;
+            width: 100%;
+            background: #ddd;
+        }
+
+        .toast .progress:before {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            right: 0;
+            height: 100%;
+            width: 100%;
+            background-color: #4070f4;
+        }
+
+        .progress.active:before {
+            animation: progress 3s linear forwards;
+        }
+
+        @keyframes progress {
+            100% {
+                right: 100%;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="wrapper">
+        <!-- Toast Notification -->
+        <div class="toast-container">
+            <div class="toast" id="successToast">
+                <div class="toast-content">
+                    <i class="fas fa-check check"></i>
+                    <div class="message">
+                        <span class="text text-1">Success</span>
+                        <span class="text text-2">Account created successfully!</span>
+                    </div>
+                </div>
+                <div class="progress"></div>
+            </div>
+        </div>
+
+        <form action="#" id="signupForm">
+            <h1>Sign Up</h1>
+            <div class="input-box">
+                <input type="text" placeholder="Full Name" required>
+                <i class="fas fa-user"></i>
+            </div>
+            <div class="input-box">
+                <input type="email" placeholder="Email Address" required>
+                <i class="fas fa-envelope"></i>
+            </div>
+            <div class="input-box">
+                <input type="tel" placeholder="Phone Number" required>
+                <i class="fas fa-phone"></i>
+            </div>
+            <div class="input-box">
+                <input type="password" placeholder="Password" required>
+                <i class="fas fa-lock"></i>
+            </div>
+            <div class="input-box">
+                <input type="password" placeholder="Confirm Password" required>
+                <i class="fas fa-lock"></i>
+            </div>
+            <button type="submit">Sign Up</button>
+            <div class="login-link">
+                <p>Already have an account? <a href="login.html">Login</a></p>
+            </div>
+        </form>
+    </div>
+    <script>
+        document.getElementById('signupForm').addEventListener('submit', function(e) {
+            e.preventDefault();
+            
+            // Show success toast
+            const toast = document.getElementById('successToast');
+            const progress = toast.querySelector('.progress');
+            
+            toast.classList.add('active');
+            progress.classList.add('active');
+
+            setTimeout(() => {
+                toast.classList.remove('active');
+            }, 3000);
+
+            setTimeout(() => {
+                progress.classList.remove('active');
+                // Redirect to login page
+                window.location.href = 'login.html';
+            }, 3300);
+        });
+    </script>
+</body>
+</html>
